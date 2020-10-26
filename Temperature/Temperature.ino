@@ -9,10 +9,10 @@ const int LED_1 = 16; //LED Merah
 const int LED_2 = 17; //LED Kuning
 const int LED_3 = 4; //LED Hijau
 const int PIN_INPUT = 36;
+bool isOn = false;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println(F("DHTxx test!"));
   pinMode(LED_1, OUTPUT);
   pinMode(LED_2, OUTPUT);
   pinMode(LED_3, OUTPUT);
@@ -25,7 +25,20 @@ void loop() {
 
   int state_push_button = digitalRead(PIN_INPUT);
   
-  if(state_push_button == HIGH)
+  if(state_push_button == HIGH && isOn == false)
+  {
+    isOn = true;
+    Serial.println("DHT 11 turn on!!!");
+  }
+  else if(state_push_button == HIGH && isOn == true) {
+    isOn = false;
+    digitalWrite(LED_3,LOW);
+    digitalWrite(LED_2,LOW);
+    digitalWrite(LED_1,LOW);
+    Serial.println("DHT 11 turn off!!!");
+  }
+  
+  if(isOn == true)
   {
     float h = dht.readHumidity(); //kelembapan
     float t = dht.readTemperature(); //data berupa celsius
@@ -70,5 +83,5 @@ void loop() {
       digitalWrite(LED_1,HIGH);
     }
   }
-
+  
 }
