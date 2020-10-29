@@ -3,7 +3,7 @@
 #include <WiFiClient.h>
 #include <BlynkSimpleEsp32.h>
 int pin = 4;
-char auth[] = "gA6Q0eavLL3R_mevlcjjbHiempApNGb2";       // You should get Auth Token in the Blynk App.
+char auth[] = "JCYcnUopgmmH1yXp1a5WrZl2_WaAbJEA";       // You should get Auth Token in the Blynk App.
 char ssid[] = "Flemel";                    // Your Wi-Fi Credentials
 char pass[] = "nyxtgu186534";
 void setup() {  
@@ -20,7 +20,7 @@ void setup() {
   Serial.print(".");
   }
   Serial.println("WiFi connected");  
-  Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 8080);
+  Blynk.begin(auth, ssid, pass, IPAddress(192,168,1,6), 8080);
 }
 void loop(){
    Blynk.run();
