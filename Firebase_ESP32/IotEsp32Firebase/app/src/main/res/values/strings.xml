@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Iot Esp32 Firebase</string>
+    <string name="ldr_value">LDR Value</string>
+    <string name="servo_value">Servo Value</string>
+</resources>
